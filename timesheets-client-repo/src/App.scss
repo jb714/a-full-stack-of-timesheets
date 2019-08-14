@@ -31,9 +31,11 @@
   }
 }
 
-
-.timesheet-table {
-  width: 100%;
+.table-container {
+  min-height: 300px; //Probably will need to refactor this for overflow/scrolling
+  .timesheet-table {
+    width: 100%;
+  }
 }
 
 

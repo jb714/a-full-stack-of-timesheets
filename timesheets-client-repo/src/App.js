@@ -8,8 +8,6 @@ import './App.scss';
 
 class App extends Component  {
 
-  //<Footer />
-
   render() {
     return (
       <Router>
@@ -17,6 +15,7 @@ class App extends Component  {
           <SiteNav />
           <Route exact path='/' component={TableAndFilter} />
           <Route exact path='/add_entry' component={AddTableEntry} />
+          <Footer />
         </div>
       </Router>
     );
