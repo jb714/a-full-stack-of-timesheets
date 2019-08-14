@@ -1,0 +1,42 @@
+//utility classes
+.border-thick {
+  border: 4px solid black;
+}
+
+.app {
+  margin: 50px auto;
+  max-width: 1000px;
+}
+
+.site-nav {
+  // .navbar-nav {
+  //   flex-direction: row;
+  //  }
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+  // align-items: center;
+
+}
+
+
+.table-filter-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 48px 0px;
+
+  .client-searchbox {
+    min-width: 300px;
+  }
+}
+
+
+.timesheet-table {
+  width: 100%;
+}
+
+
+.footer {
+  margin-top: 16px;
+}
