@@ -32,9 +32,20 @@
 }
 
 .table-container {
-  min-height: 300px; //Probably will need to refactor this for overflow/scrolling
+  max-height: 300px; //Probably will need to refactor this for overflow/scrolling
+  overflow-y: auto;
+
   .timesheet-table {
     width: 100%;
+    // thead tr {
+    //   display: block;
+    // }
+    // tbody {
+    //   display: block;
+    //   overflow: auto;
+    //   height: 200px;
+    //   width: 100%
+    // }
   }
 }
 
