@@ -5,7 +5,7 @@ class AddTableEntry extends Component {
   render() {
     return (
       /*
-      Client, Project Name, Hours, Billable Hours, Billable Amount
+      Client, Project Name, Hours, Billable Hours, Billable Rate
       */
       <div className='form-wrapper'>
         <h3>Add a timesheet entry:</h3>
