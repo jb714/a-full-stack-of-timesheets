@@ -37,6 +37,9 @@
 
   .timesheet-table {
     width: 100%;
+    th, td {
+      padding: 16px;
+    }
     // thead tr {
     //   display: block;
     // }
@@ -49,7 +52,16 @@
   }
 }
 
+.form-wrapper {
+  //padding: 0.5rem 1rem; keedping consistent with padding in bootstrap nav
+  .form-prompt {
+    font-size: 18px;
+    font-weight: 900;
+    margin: 48px 0px;
+  }
+}
+
 
 .footer {
-  margin-top: 16px;
+  margin-top: 32px;
 }

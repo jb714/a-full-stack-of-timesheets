@@ -5,7 +5,7 @@ class SiteNav extends Component {
   render() {
     return (
       <nav className='site-nav navbar border-thick'>
-        <h1>Timesheets<span><h3>Now featuring full stack!</h3></span></h1>
+        <h1>Timesheets<span><h3>(Now featuring full stack!)</h3></span></h1>
         <ul className='navbar-nav'>
           <li className='nav-item'>
             <a className='nav-link' href='/'>Home</a>

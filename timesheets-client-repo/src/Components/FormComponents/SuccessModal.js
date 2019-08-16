@@ -6,7 +6,7 @@ class SuccessModal extends Component {
     return (
       <Modal show={this.props.showModal} onHide={this.props.handleCloseModal}>
         <Modal.Header closeButton>
-          Successfully submitted!
+          <h5>Successfully submitted!</h5> &ensp; &#128526; &#128526; &#128526;
         </Modal.Header>
       </Modal>
     );

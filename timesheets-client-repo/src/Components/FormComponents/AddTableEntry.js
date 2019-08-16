@@ -94,7 +94,7 @@ class AddTableEntry extends Component {
 
     return (
       <div className='form-wrapper'>
-        <h3>Add a timesheet entry:</h3>
+        <p className='form-prompt'>Fill out the below form to submit a timesheet entry:</p>
         <form onSubmit={this.handleFormSubmit}>
           <div className='form-group'>
             <label htmlFor='Client'>Client:</label>
@@ -112,7 +112,7 @@ class AddTableEntry extends Component {
             <label htmlFor='BillableRate'>Billable Rate:</label>
             <input type='text' className='form-control' id='BillableRate' value={billable_rate} onChange={this.onAddBillableRate}></input>
           </div>
-          <input type="submit" value="Submit your entries" />
+          <button type="submit" className="btn btn-success">Submit your entries</button>
         </form>
         <SuccessModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal}/>
       </div>

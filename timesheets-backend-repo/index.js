@@ -29,13 +29,29 @@ timesheetRoutes.route('/').get(function(req,res) {
   let filteredQueries = {"Client": {$ne: ""}, "Project": {$ne: ""}};
   let desiredFields = { "Client": 1, "Project": 1, "Hours": 1, "Billable?": 1, "Billable Rate": 1 };
 
-  Timesheet.find(filteredQueries, desiredFields,
-    function(err, timesheets){
+  Timesheet.find(filteredQueries, desiredFields, function(err, timesheets){
     if(err) {
       console.log(err)
     }
     else {
       res.json(timesheets);
+    }
+  })
+});
+
+timesheetRoutes.route('/client_search').get(function(req,res) {
+
+  let clientQuery = req.query.clientQuery;
+
+  let desiredFields = { "Client": 1, "Project": 1, "Hours": 1, "Billable?": 1, "Billable Rate": 1 };
+
+  Timesheet.find({"Client": clientQuery}, desiredFields, function(err, clientTimesheets){
+    if(err) {
+      console.log(err)
+    }
+    else {
+      console.log(clientTimesheets);
+      res.json(clientTimesheets);
     }
   })
 });
