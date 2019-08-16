@@ -75,21 +75,21 @@ class TableAndFilterContainer extends Component {
     return (
       <div className='table-and-filter-section'>
         {filteredByClient ?
-          <section className="table-filter-section">
+          <section className='table-filter-section'>
             <div>Showing results for {this.state.clientQueryFilter}</div>
-            <button className="btn btn-success" onClick={this.handleClientFilterOff}>Click to see all timesheets</button>
+            <button className='btn btn-success' onClick={this.handleClientFilterOff}>Click to see all timesheets</button>
           </section>
           :
-          <section className="table-filter-section">
-            <p className="med-bold">All timesheet entries listed below.</p>
+          <section className='table-filter-section'>
+            <p className='fw-bold'>All timesheet entries listed below.</p>
             <form onSubmit={this.handleClientFilterOn}>
               <input
-                className="client-searchbox"
-                type="text"
+                className='client-searchbox'
+                type='text'
                 value={this.state.clientQuery}
                 onChange={this.updateClientQuery}
-                placeholder="Find entry by client name"></input>
-              <button className="btn btn-success">Find client entries</button>
+                placeholder='Find entry by client name'></input>
+              <button className='btn btn-success'>Find client entries</button>
             </form>
           </section>
         }

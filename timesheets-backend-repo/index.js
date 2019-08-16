@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const timesheetRoutes = express.Router();
 
@@ -15,7 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //MongoDB Atlas (cloud DB) connection
-mongoose.connect('mongodb+srv://jb_GM:fu11st@ck@jbdemocluster-wbyqq.azure.mongodb.net/JB_Giant_Machines' || 'mongodb://localhost/test', {useNewUrlParser: true});
+mongoose.connect(process.env.DB_URI || 'mongodb://localhost/test', {useNewUrlParser: true});
 
 app.listen(port, function(){
   console.log('Now up and running on port', port);

@@ -3,20 +3,13 @@
   border: 4px solid black;
 }
 
+.fw-bold {
+  font-weight: 700;
+}
+
 .app {
   margin: 50px auto;
   max-width: 1000px;
-}
-
-.site-nav {
-  // .navbar-nav {
-  //   flex-direction: row;
-  //  }
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
-  // align-items: center;
-
 }
 
 
@@ -40,15 +33,6 @@
     th, td {
       padding: 16px;
     }
-    // thead tr {
-    //   display: block;
-    // }
-    // tbody {
-    //   display: block;
-    //   overflow: auto;
-    //   height: 200px;
-    //   width: 100%
-    // }
   }
 }
 
@@ -56,7 +40,6 @@
   //padding: 0.5rem 1rem; keedping consistent with padding in bootstrap nav
   .form-prompt {
     font-size: 18px;
-    font-weight: 900;
     margin: 48px 0px;
   }
 }

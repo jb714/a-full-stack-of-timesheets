@@ -94,25 +94,29 @@ class AddTableEntry extends Component {
 
     return (
       <div className='form-wrapper'>
-        <p className='form-prompt'>Fill out the below form to submit a timesheet entry:</p>
+        <p className='form-prompt fw-bold'>Fill out the below form to submit a timesheet entry:</p>
         <form onSubmit={this.handleFormSubmit}>
           <div className='form-group'>
             <label htmlFor='Client'>Client:</label>
             <input type='text' className='form-control' id='Client' value={client} onChange={this.onAddClient}></input>
-
+          </div>
+          <div className='form-group'>
             <label htmlFor='ProjectName'>Project Name:</label>
             <input type='text' className='form-control' id='ProjectName' value={project} onChange={this.onAddProject}></input>
-
+          </div>
+          <div className='form-group'>
             <label htmlFor='Hours'>Hours:</label>
             <input type='text' className='form-control' id='Hours' value={hours} onChange={this.onAddHours}></input>
-
+          </div>
+          <div className='form-group'>
             <label htmlFor='BillableHours'>Billable?:</label>
             <input type='text' className='form-control' id='Billable' value={billable} onChange={this.onAddBillable}></input>
-
+          </div>
+          <div className='form-group'>
             <label htmlFor='BillableRate'>Billable Rate:</label>
             <input type='text' className='form-control' id='BillableRate' value={billable_rate} onChange={this.onAddBillableRate}></input>
           </div>
-          <button type="submit" className="btn btn-success">Submit your entry</button>
+          <button type='submit' className='btn btn-success'>Submit your entry</button>
         </form>
         <SuccessModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal}/>
       </div>
