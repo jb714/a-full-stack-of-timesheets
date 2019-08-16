@@ -2,23 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Timesheet = new Schema({
-  client: {
+  Client: {
     type: String,
     required: true
   },
-  project_name: {
+  Project: {
     type: String,
     required: true
   },
-  hours: {
+  Hours: {
     type: Number,
     required: true
   },
-  billable_hours: {
-    type: Number,
+  "Billable?": {
+    type: String,
     required: true
   },
-  billable_rate: {
+  "Billable Rate": {
     type: Number,
     required: true
   }

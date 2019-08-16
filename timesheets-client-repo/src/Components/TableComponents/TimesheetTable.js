@@ -4,19 +4,18 @@ class TimesheetTable extends Component {
 
 
   render() {
-    let renderedRows;
 
-    renderedRows = this.props.allTimesheets.map(function(timesheet){
-          return(
-            <tr key={timesheet._id}>
-              <td>{timesheet.Client}</td>
-              <td>{timesheet.Project}</td>
-              <td>{timesheet.Hours}</td>
-              <td>{timesheet["Billable?"]}</td>
-              <td>{timesheet["Billable Rate"]}</td>
-            </tr>
-          )
-        });
+    let renderedRows = this.props.allTimesheets.map(function(timesheet){
+      return(
+        <tr key={timesheet._id}>
+          <td>{timesheet.Client}</td>
+          <td>{timesheet.Project}</td>
+          <td>{timesheet.Hours}</td>
+          <td>{timesheet["Billable?"]}</td>
+          <td>{timesheet["Billable Rate"]}</td>
+        </tr>
+      )
+    });
 
     return (
       <div className='table-container border-thick'>

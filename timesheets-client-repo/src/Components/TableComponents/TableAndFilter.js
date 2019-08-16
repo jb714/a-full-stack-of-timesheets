@@ -20,6 +20,7 @@ class TableAndFilter extends Component {
   getAllTimesheets() {
     axios.get('http://localhost:8080/timesheets/')
     .then(response => {
+      console.log('data:', response.data);
       this.setState({allTimesheets: response.data});
     })
     .catch(function(error) {
