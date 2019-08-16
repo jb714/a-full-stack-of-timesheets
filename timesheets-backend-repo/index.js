@@ -14,7 +14,8 @@ let Timesheet = require('./models/timesheet.model.js');
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+//MongoDB Atlas (cloud DB) connection
+mongoose.connect('mongodb+srv://jb_GM:fu11st@ck@jbdemocluster-wbyqq.azure.mongodb.net/JB_Giant_Machines' || 'mongodb://localhost/test', {useNewUrlParser: true});
 
 app.listen(port, function(){
   console.log('Now up and running on port', port);
@@ -24,6 +25,8 @@ mongoose.connection.on('connected', function() {
   console.log('DB is up!!');
 });
 
+
+//custom API endpoints for getting all records, finding by client, and adding a document/record
 timesheetRoutes.route('/').get(function(req,res) {
 
   let filteredQueries = {"Client": {$ne: ""}, "Project": {$ne: ""}};
@@ -50,7 +53,6 @@ timesheetRoutes.route('/client_search').get(function(req,res) {
       console.log(err)
     }
     else {
-      console.log(clientTimesheets);
       res.json(clientTimesheets);
     }
   })

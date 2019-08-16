@@ -81,7 +81,7 @@ class TableAndFilterContainer extends Component {
           </section>
           :
           <section className="table-filter-section">
-            <div>All entries listed below.</div>
+            <p className="med-bold">All timesheet entries listed below.</p>
             <form onSubmit={this.handleClientFilterOn}>
               <input
                 className="client-searchbox"

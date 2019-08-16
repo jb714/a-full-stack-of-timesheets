@@ -32,7 +32,7 @@
 }
 
 .table-container {
-  max-height: 300px; //Probably will need to refactor this for overflow/scrolling
+  height: 300px; //Probably will need to refactor this for overflow/scrolling
   overflow-y: auto;
 
   .timesheet-table {

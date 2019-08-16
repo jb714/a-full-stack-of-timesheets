@@ -112,7 +112,7 @@ class AddTableEntry extends Component {
             <label htmlFor='BillableRate'>Billable Rate:</label>
             <input type='text' className='form-control' id='BillableRate' value={billable_rate} onChange={this.onAddBillableRate}></input>
           </div>
-          <button type="submit" className="btn btn-success">Submit your entries</button>
+          <button type="submit" className="btn btn-success">Submit your entry</button>
         </form>
         <SuccessModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal}/>
       </div>
