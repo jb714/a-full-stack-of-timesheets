@@ -1,113 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { Modal } from 'react-bootstrap'
 
-class AddTableEntry extends Component {
-  constructor() {
-    super();
-    this.state = {
-      client: '',
-      project: '',
-      hours: 0,
-      billable: '',
-      billable_rate: 0
-    }
-
-    this.onAddClient = this.onAddClient.bind(this);
-    this.onAddProject = this.onAddProject.bind(this);
-    this.onAddHours = this.onAddHours.bind(this);
-    this.onAddBillable = this.onAddBillable.bind(this);
-    this.onAddBillableRate = this.onAddBillableRate.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-  }
-
-  onAddClient(e) {
-    this.setState({
-      client: e.target.value
-    })
-  }
-
-  onAddProject(e) {
-    this.setState({
-      project: e.target.value
-    })
-  }
-
-  onAddHours(e) {
-    this.setState({
-      hours: e.target.value
-    })
-  }
-
-  onAddBillable(e) {
-    this.setState({
-      billable: e.target.value
-    })
-  }
-
-  onAddBillableRate(e) {
-    this.setState({
-      billable_rate: e.target.value
-    })
-  }
-
-  handleFormSubmit(e) {
-    e.preventDefault();
-
-    const newTimesheet = {
-      Client: this.state.client,
-      Project: this.state.project,
-      Hours: this.state.hours,
-      "Billable?": this.state.billable,
-      "Billable Rate": this.state.billable_rate
-    }
-
-    axios.post('http://localhost:8080/timesheets/add_entry', newTimesheet)
-    .then(res => console.log(res.data));
-
-      this.setState({
-        client: '',
-        project: '',
-        hours: 0,
-        billable: '',
-        billable_rate: 0
-      });
-  }
-
+class SuccessModal extends Component {
   render() {
-
-    const {
-      client,
-      project,
-      hours,
-      billable,
-      billable_rate
-    } = this.state;
-
     return (
-      <div className='form-wrapper'>
-        <h3>Add a timesheet entry:</h3>
-        <form onSubmit={this.handleFormSubmit}>
-          <div className='form-group'>
-            <label htmlFor='Client'>Client:</label>
-            <input type='text' className='form-control' id='Client' value={client} onChange={this.onAddClient}></input>
-
-            <label htmlFor='ProjectName'>Project Name:</label>
-            <input type='text' className='form-control' id='ProjectName' value={project} onChange={this.onAddProject}></input>
-
-            <label htmlFor='Hours'>Hours:</label>
-            <input type='text' className='form-control' id='Hours' value={hours} onChange={this.onAddHours}></input>
-
-            <label htmlFor='BillableHours'>Billable?:</label>
-            <input type='text' className='form-control' id='Billable' value={billable} onChange={this.onAddBillable}></input>
-
-            <label htmlFor='BillableRate'>Billable Rate:</label>
-            <input type='text' className='form-control' id='BillableRate' value={billable_rate} onChange={this.onAddBillableRate}></input>
-          </div>
-          <input type="submit" value="Submit your entries" />
-        </form>
-      </div>
+      <Modal show={this.props.showModal} onHide={this.props.handleCloseModal}>
+        <Modal.Header closeButton>
+          Successfully submitted!
+        </Modal.Header>
+      </Modal>
     );
   }
 }
 
-export default AddTableEntry;
+export default SuccessModal;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import SuccessModal from './SuccessModal';
+
 class AddTableEntry extends Component {
   constructor() {
     super();
@@ -9,7 +11,8 @@ class AddTableEntry extends Component {
       project: '',
       hours: 0,
       billable: '',
-      billable_rate: 0
+      billable_rate: 0,
+      showModal: false
     }
 
     this.onAddClient = this.onAddClient.bind(this);
@@ -18,6 +21,7 @@ class AddTableEntry extends Component {
     this.onAddBillable = this.onAddBillable.bind(this);
     this.onAddBillableRate = this.onAddBillableRate.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   onAddClient(e) {
@@ -50,6 +54,10 @@ class AddTableEntry extends Component {
     })
   }
 
+  handleCloseModal() {
+    this.setState({showModal: false});
+  }
+
   handleFormSubmit(e) {
     e.preventDefault();
 
@@ -69,7 +77,8 @@ class AddTableEntry extends Component {
         project: '',
         hours: 0,
         billable: '',
-        billable_rate: 0
+        billable_rate: 0,
+        showModal: true
       });
   }
 
@@ -105,6 +114,7 @@ class AddTableEntry extends Component {
           </div>
           <input type="submit" value="Submit your entries" />
         </form>
+        <SuccessModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal}/>
       </div>
     );
   }
