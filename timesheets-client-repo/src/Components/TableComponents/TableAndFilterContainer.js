@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TableFilter from './TableFilter';
 import TimesheetTable from './TimesheetTable';
 import axios from 'axios';
 
@@ -9,18 +8,22 @@ class TableAndFilterContainer extends Component {
     super();
 
     this.state = {
+      clientQuery: '',
+      clientQueryFilter: '',
       allTimesheets: [],
       clientSpecificTimesheets: [],
       filteredByClient: false,
 
     }
     this.getAllTimesheets = this.getAllTimesheets.bind(this);
+    this.updateClientQuery = this.updateClientQuery.bind(this);
+    this.handleClientFilterOn = this.handleClientFilterOn.bind(this);
+    this.handleClientFilterOff = this.handleClientFilterOff.bind(this);
   }
 
   getAllTimesheets() {
     axios.get('http://localhost:8080/timesheets/')
     .then(response => {
-      console.log('data:', response.data);
       this.setState({allTimesheets: response.data});
     })
     .catch(function(error) {
@@ -30,32 +33,66 @@ class TableAndFilterContainer extends Component {
 
   updateClientQuery(e) {
     this.setState({
-      clientQuery: e.target.value
+      clientQuery: e.target.value,
+      clientQueryFilter: e.target.value
     })
   }
 
-  handleClientSearch(e) {
+  handleClientFilterOn(e) {
     e.preventDefault();
     let clientQuery = this.state.clientQuery;
 
     axios.get('http://localhost:8080/timesheets/client_search', {params:{clientQuery: clientQuery}})
     .then(response =>{
-      console.log('data!',response);
-      this.setState({clientQuery: ''});
+      this.setState({
+        clientQuery: '',
+        clientSpecificTimesheets: response.data,
+        filteredByClient: true
+      });
     })
     .catch(function(error) {
       console.log(error);
     })
   }
 
+  handleClientFilterOff() {
+    this.setState({
+      filteredByClient: false
+    })
+  }
+
+
+
   componentDidMount() {
     this.getAllTimesheets();
   }
 
   render() {
+    const {
+      filteredByClient
+    } = this.state;
+
     return (
       <div className='table-and-filter-section'>
-        <TableFilter filteredByClient={this.state.filteredByClient}/>
+        {filteredByClient ?
+          <section className="table-filter-section">
+            <div>Showing results for {this.state.clientQueryFilter}</div>
+            <button className="btn btn-success" onClick={this.handleClientFilterOff}>Click to see all timesheets</button>
+          </section>
+          :
+          <section className="table-filter-section">
+            <div>All entries listed below.</div>
+            <form onSubmit={this.handleClientFilterOn}>
+              <input
+                className="client-searchbox"
+                type="text"
+                value={this.state.clientQuery}
+                onChange={this.updateClientQuery}
+                placeholder="Find entry by client name"></input>
+              <button className="btn btn-success">Find client entries</button>
+            </form>
+          </section>
+        }
         <TimesheetTable
           allTimesheets={this.state.allTimesheets}
           clientSpecificTimesheets={this.state.clientSpecificTimesheets}

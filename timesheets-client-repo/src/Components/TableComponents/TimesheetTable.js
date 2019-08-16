@@ -2,28 +2,41 @@ import React, { Component } from 'react';
 
 class TimesheetTable extends Component {
 
-  constructor(props) {
-    super(props);
-    this.renderRows = this.renderRows.bind(this);
-  }
-
-  renderRows() {
-    let renderedRows = this.props.allTimesheets.map(function(timesheet){
-      return(
-        <tr key={timesheet._id}>
-          <td>{timesheet.Client}</td>
-          <td>{timesheet.Project}</td>
-          <td>{timesheet.Hours}</td>
-          <td>{timesheet["Billable?"]}</td>
-          <td>{timesheet["Billable Rate"]}</td>
-        </tr>
-      )
-    });
-  }
 
   render() {
-    let renderedRows = this.renderRows();
-    console.log('still works??');
+    const {
+      filteredByClient
+    } = this.props;
+
+    let renderedRows;
+
+    if(filteredByClient) {
+      renderedRows = this.props.clientSpecificTimesheets.map(function(timesheet){
+        return(
+          <tr key={timesheet._id}>
+            <td>{timesheet.Client}</td>
+            <td>{timesheet.Project}</td>
+            <td>{timesheet.Hours}</td>
+            <td>{timesheet["Billable?"]}</td>
+            <td>{timesheet["Billable Rate"]}</td>
+          </tr>
+        )
+      });
+    }
+    else {
+      renderedRows = this.props.allTimesheets.map(function(timesheet){
+        return(
+          <tr key={timesheet._id}>
+            <td>{timesheet.Client}</td>
+            <td>{timesheet.Project}</td>
+            <td>{timesheet.Hours}</td>
+            <td>{timesheet["Billable?"]}</td>
+            <td>{timesheet["Billable Rate"]}</td>
+          </tr>
+        )
+      });
+    }
+
     return (
       <div className='table-container border-thick'>
         <table className='timesheet-table table-striped'>
