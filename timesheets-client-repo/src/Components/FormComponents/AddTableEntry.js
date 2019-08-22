@@ -14,51 +14,43 @@ class AddTableEntry extends Component {
       billable_rate: 0,
       showModal: false
     }
-
-    this.onAddClient = this.onAddClient.bind(this);
-    this.onAddProject = this.onAddProject.bind(this);
-    this.onAddHours = this.onAddHours.bind(this);
-    this.onAddBillable = this.onAddBillable.bind(this);
-    this.onAddBillableRate = this.onAddBillableRate.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  onAddClient(e) {
+  onAddClient = (e) => {
     this.setState({
       client: e.target.value
     })
   }
 
-  onAddProject(e) {
+  onAddProject = (e) => {
     this.setState({
       project: e.target.value
     })
   }
 
-  onAddHours(e) {
+  onAddHours = (e) => {
     this.setState({
       hours: e.target.value
     })
   }
 
-  onAddBillable(e) {
+  onAddBillable = (e) => {
     this.setState({
       billable: e.target.value
     })
   }
 
-  onAddBillableRate(e) {
+  onAddBillableRate = (e) => {
     this.setState({
       billable_rate: e.target.value
     })
   }
 
-  handleCloseModal() {
+  handleCloseModal = () => {
     this.setState({showModal: false});
   }
 
-  handleFormSubmit(e) {
+  handleFormSubmit = (e) => {
     e.preventDefault();
 
     const newTimesheet = {

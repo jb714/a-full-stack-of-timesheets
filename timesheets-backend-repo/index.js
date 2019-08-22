@@ -64,11 +64,12 @@ timesheetRoutes.route('/add_entry').post(function(req,res) {
 
   newTimesheet.save()
   .then(newTimesheet =>{
-    res.status(200).json({'newTimesheet': newTimesheet});
+    res.status(201).json({'newTimesheet': newTimesheet});
   })
   .catch(err => {
     res.status(400).send('hmmm something went wrong...');
   })
 });
 
+// /timesheets is the main route branch for this set of endpoints. All other slugs branch/connect to this, using the 'timehseetRoutes' instance of express.Router()
 app.use('/timesheets', timesheetRoutes)

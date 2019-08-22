@@ -5,13 +5,15 @@ class TimesheetTable extends Component {
 
   render() {
     const {
-      filteredByClient
+      filteredByClient,
+      clientSpecificTimesheets,
+      allTimesheets
     } = this.props;
 
-    let renderedRows;
+    let timesheets;
+    filteredByClient ? timesheets = clientSpecificTimesheets : timesheets = allTimesheets;
 
-    if(filteredByClient) {
-      renderedRows = this.props.clientSpecificTimesheets.map(function(timesheet){
+      let renderedRows = timesheets.map(function(timesheet){
         return(
           <tr key={timesheet._id}>
             <td>{timesheet.Client}</td>
@@ -22,20 +24,6 @@ class TimesheetTable extends Component {
           </tr>
         )
       });
-    }
-    else {
-      renderedRows = this.props.allTimesheets.map(function(timesheet){
-        return(
-          <tr key={timesheet._id}>
-            <td>{timesheet.Client}</td>
-            <td>{timesheet.Project}</td>
-            <td>{timesheet.Hours}</td>
-            <td>{timesheet["Billable?"]}</td>
-            <td>{timesheet["Billable Rate"]}</td>
-          </tr>
-        )
-      });
-    }
 
     return (
       <div className='table-container border-thick'>

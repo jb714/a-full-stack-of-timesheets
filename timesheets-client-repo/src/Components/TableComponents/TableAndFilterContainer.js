@@ -15,13 +15,9 @@ class TableAndFilterContainer extends Component {
       filteredByClient: false,
 
     }
-    this.getAllTimesheets = this.getAllTimesheets.bind(this);
-    this.updateClientQuery = this.updateClientQuery.bind(this);
-    this.handleClientFilterOn = this.handleClientFilterOn.bind(this);
-    this.handleClientFilterOff = this.handleClientFilterOff.bind(this);
   }
 
-  getAllTimesheets() {
+  getAllTimesheets = () => {
     axios.get('http://localhost:8080/timesheets/')
     .then(response => {
       this.setState({allTimesheets: response.data});
@@ -31,14 +27,14 @@ class TableAndFilterContainer extends Component {
     })
   }
 
-  updateClientQuery(e) {
+  updateClientQuery = (e) => {
     this.setState({
       clientQuery: e.target.value,
       clientQueryFilter: e.target.value
     })
   }
 
-  handleClientFilterOn(e) {
+  handleClientFilterOn = (e) => {
     e.preventDefault();
     let clientQuery = this.state.clientQuery;
 
@@ -55,7 +51,7 @@ class TableAndFilterContainer extends Component {
     })
   }
 
-  handleClientFilterOff() {
+  handleClientFilterOff = () => {
     this.setState({
       filteredByClient: false
     })
@@ -63,7 +59,7 @@ class TableAndFilterContainer extends Component {
 
 
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getAllTimesheets();
   }
 
