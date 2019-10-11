@@ -13,7 +13,6 @@ class TableAndFilterContainer extends Component {
       allTimesheets: [],
       clientSpecificTimesheets: [],
       filteredByClient: false,
-
     }
   }
 

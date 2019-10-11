@@ -106,7 +106,7 @@ class AddTableEntry extends Component {
           </div>
           <div className='form-group'>
             <label htmlFor='BillableRate'>Billable Rate:</label>
-            <input type='text' className='form-control' id='BillableRate' value={billable_rate} onChange={this.onAddBillableRate}></input>
+            <input type='text' className='form-control' id='BillableRate' value={billable_rate} onChange={this.onAddBillableRate} maxLength="3"></input>
           </div>
           <button type='submit' className='btn btn-success'>Submit your entry</button>
         </form>
